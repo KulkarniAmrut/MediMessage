@@ -1,1 +1,0 @@
-patient4 = ({"_id":"patient4", "patient_name":"Uriah Garrison", "address":"11002 Beltway Place", "phone_number":"4049980327", "username":"ugarrison2", "password":"SurvivedTheCivilWar", "date_of_birth":"03/09/1854", "curr_appointment":"09/30/2018", "past_appointments":["09/30/2017","09/30/2016","09/30/2015"],"preferred_doctor":"Jeremiah Sanderson"});

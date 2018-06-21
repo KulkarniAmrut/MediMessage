@@ -1,0 +1,22 @@
+{
+  "name": "medimessage",
+  "version": "1.0.0",
+  "description": "An app that would allow patients to direct message their doctor, set appointments, etc.",
+  "main": "mediMessage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkUnaTulrik/MediMessage.git"
+  },
+  "author": "Amrut Kulkarni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkUnaTulrik/MediMessage/issues"
+  },
+  "homepage": "https://github.com/MarkUnaTulrik/MediMessage#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

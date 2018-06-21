@@ -1,0 +1,10 @@
+patient1 = ({ "_id" : "patient1",
+            "patient_name" : "Ramesh Singh",
+            "address" : "33240 Brick Lane Ct",
+            "phone_number" : "4043280354",
+            "username" : "rsingh34",
+            "password" : "Singher2132",
+            "date_of_birth" : "12/12/1988",
+            "curr_appointment" : "08/19/2018",
+            "past_appointments" : [ "08/20/2017", "08/21/2016", "08/19/2015" ],
+            "preferred_doctor" : "Sean Dean" });
