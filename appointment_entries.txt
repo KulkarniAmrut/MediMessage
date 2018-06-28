@@ -1,0 +1,1 @@
+doctor1 = ({  "_id" : "Sean Dean", "phone_number" : "4049441254", "username" : "sdean5", "password" : "MedicalSchool3274"});
