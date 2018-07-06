@@ -5,17 +5,22 @@
     <input
     matInput
     type="text"
-    name="Title"
+    name="title"
     ngModel
-    required>
+    required
+    minlength="3"
+    #title="ngModel">
+    <mat-error *ngIf="title.invalid">Title Empty</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea
     matInput
     rows="4"
-    name="Content"
+    name="content"
     ngModel
-    required></textarea>
+    required
+    #content="ngModel"></textarea>
+    <mat-error *ngIf="content.invalid">Content Empty</mat-error>
   </mat-form-field>
 
   <button
