@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const Post = require('./models/post');
 const app = express();
 
-mongoose.connect('mongodb+srv://Max:GcVA2XR9IHC9SB49@cluster0-um81s.mongodb.net/test?retryWrites=true')
+mongoose.connect('mongodb+srv://Max:GcVA2XR9IHC9SB49@cluster0-um81s.mongodb.net/node-angular?retryWrites=true')
   .then(() => {
     console.log('Connected To Database!');
   })
@@ -40,24 +40,26 @@ app.post("/api/posts", (req, res, next) => {
     content: req.body.content
   });
   console.log(post);
+  post.save();
   res.status(201).json({
     message: 'Post Added Successfully'
   });
 });
 
 app.get('/api/posts', (req, res, next) => {
-  const posts = [
-    {id: "alsjfo2j3fa",
-     title: 'first server side post',
-     content: "posting from server"},
-    {id: "zvlskjtifoe",
-     title: 'second server side post',
-     content: "also posting from server"}
-  ];
-  res.status(200).json({
-    message: 'Posts fetched successfully',
-    posts: posts
-  });
+  Post.find()
+    .then(documents => {
+      // console.log(documents);
+      res.status(200).json({
+        message: 'Posts fetched successfully',
+        posts: documents
+      });
+    });
+});
+
+app.delete('api/posts/:id', (req, res, next) => {
+  console.log(req.params.id);
+  res.status(200).json({ message: "Post Deleted!" });
 });
 
 module.exports = app;
