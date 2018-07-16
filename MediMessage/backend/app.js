@@ -2,22 +2,23 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const mongoose = require('mongoose');
 
 const Post = require('./models/post');
 const app = express();
 
-mongoose.connect('mongodb+srv://Max:GcVA2XR9IHC9SB49@cluster0-um81s.mongodb.net/node-angular?retryWrites=true')
+mongoose.connect(
+  'mongodb+srv://Max:GcVA2XR9IHC9SB49@cluster0-um81s.mongodb.net/node-angular?retryWrites=true'
+  )
   .then(() => {
     console.log('Connected To Database!');
   })
   .catch(() => {
-    consol.log('Connection Failed');
+    consol.log('Connection Failed!');
   });
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -29,37 +30,36 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PATCH, DELETE, OPTIONS"
   );
-
   next();
 });
 
 app.post("/api/posts", (req, res, next) => {
-  //const post = req.body;
   const post = new Post({
     title: req.body.title,
     content: req.body.content
   });
-  console.log(post);
-  post.save();
-  res.status(201).json({
-    message: 'Post Added Successfully'
+  post.save().then(createdPost => {
+    res.status(201).json({
+      message: 'Post Added Successfully',
+      postId: createdPost._id
+    });
   });
 });
 
 app.get('/api/posts', (req, res, next) => {
-  Post.find()
-    .then(documents => {
-      // console.log(documents);
-      res.status(200).json({
-        message: 'Posts fetched successfully',
-        posts: documents
-      });
+  Post.find().then(documents => {
+    res.status(200).json({
+      message: 'Posts Fetched Successfully',
+      posts: documents
     });
+  });
 });
 
-app.delete('api/posts/:id', (req, res, next) => {
-  console.log(req.params.id);
-  res.status(200).json({ message: "Post Deleted!" });
+app.delete("/api/posts/:id", (req, res, next) => {
+  Post.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Post Deleted!" });
+  });
 });
 
 module.exports = app;
