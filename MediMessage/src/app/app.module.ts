@@ -15,7 +15,8 @@ import {
         MatButtonModule,
         MatToolbarModule,
         MatExpansionModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatPaginatorModule
       } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatExpansionModule,
     MatProgressSpinnerModule,
     HttpClientModule,
+    MatPaginatorModule,
     BrowserAnimationsModule
   ],
   providers: [],
