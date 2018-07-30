@@ -1,4 +1,3 @@
-// MongoDB Password: GcVA2XR9IHC9SB49
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,6 +8,7 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
+// MongoDB Password: GcVA2XR9IHC9SB49
 mongoose.connect(
   'mongodb+srv://Max:GcVA2XR9IHC9SB49@cluster0-um81s.mongodb.net/node-angular'
   )
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
