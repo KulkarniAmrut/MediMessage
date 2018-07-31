@@ -5,7 +5,6 @@ import { PageEvent } from '@angular/material';
 import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
 import { AuthService } from '../../auth/auth.service';
-import { isatty } from 'tty';
 
 
 @Component({
@@ -62,6 +61,8 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.postsService.deletePost(postId).subscribe(() => {
       this.postsService.getPosts(this.postsPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
     });
   }
 
