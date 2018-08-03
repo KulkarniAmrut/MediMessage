@@ -1,27 +1,29 @@
-const path = require('path');
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const path = require("path");
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
-const postsRoutes = require('./routes/posts');
-const userRoutes = require('./routes/user');
+const postsRoutes = require("./routes/posts");
+const userRoutes = require("./routes/user");
 
 const app = express();
 
-// MongoDB Password: GcVA2XR9IHC9SB49
-mongoose.connect(
-  'mongodb+srv://Max:GcVA2XR9IHC9SB49@cluster0-um81s.mongodb.net/node-angular'
+mongoose
+  .connect(
+    "mongodb+srv://Max:" +
+    process.env.MONGO_ATLAS_PW +
+    "@cluster0-um81s.mongodb.net/node-angular"
   )
   .then(() => {
-    console.log('Connected To Database!');
+    console.log("Connected to database!");
   })
   .catch(() => {
-    consol.log('Connection Failed!');
+    console.log("Connection failed!");
   });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use('/images', express.static(path.join('backend/images')));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -36,7 +38,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/posts',postsRoutes);
-app.use('/api/user', userRoutes);
+app.use("/api/posts", postsRoutes);
+app.use("/api/user", userRoutes);
 
 module.exports = app;
