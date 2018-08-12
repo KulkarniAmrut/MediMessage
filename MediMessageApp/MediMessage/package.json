@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.MediMessageFrontend",
+    "id": "org.nativescript.MediMessage",
     "tns-android": {
       "version": "4.2.0"
     },
